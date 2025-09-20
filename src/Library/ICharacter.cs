@@ -4,6 +4,7 @@ public interface ICharacter
 {
     public string Name { get; set; }
     public int HP { get; set; }
+    public int Damage { get; set; }
     public int Defense { get; set; }
     public Weapon Weapon { get; set; }
 
@@ -17,17 +18,17 @@ public interface ICharacter
         
     }
 
-    public void GiveItem(ICharacter character)
+    public void GiveItem(IItem item)
     {
         
     }
 
-    public void ChangeItem(ICharacter character)
+    public void ChangeItem(IItem item)
     {
         
     }
 
-    public void DropItem(ICharacter character)
+    public void DropItem(IItem item)
     {
         
     }
