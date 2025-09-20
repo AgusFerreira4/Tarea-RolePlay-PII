@@ -1,6 +1,6 @@
 namespace Library;
 
-public interface IPersonaje
+public interface ICharacter
 {
     public string Name { get; set; }
     public int HP { get; set; }
