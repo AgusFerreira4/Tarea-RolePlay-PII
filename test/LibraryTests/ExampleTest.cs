@@ -1,6 +1,6 @@
 namespace LibraryTests;
 
-public class Tests
+public class giTests
 {
     [SetUp]
     public void Setup()
