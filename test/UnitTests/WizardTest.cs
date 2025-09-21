@@ -1,6 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Library;
-using System.Collections.Generic;
 
 namespace LibraryTests
 {
