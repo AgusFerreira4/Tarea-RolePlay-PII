@@ -34,12 +34,4 @@ public class Weapon : IItem
     {
         Spells.RemoveAll(spell => spell.Name == name);
     }
-
-    public void PrintSpells()
-    {
-        foreach (Spell spell in Spells)
-        {
-            Console.WriteLine(spell.name);
-        }
-    }
 }
