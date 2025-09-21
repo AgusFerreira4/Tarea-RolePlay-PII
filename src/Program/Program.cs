@@ -5,7 +5,7 @@ Spell fireBall = new Spell("Fireball", "Fire", 0, 10, 9);
 Spell health = new Spell("Healthing", "Healing", 16, 12, 0);
 
 // --- Weapons ---
-Weapon spellbook = new Weapon("Spellbook", "Book", 1, new List<Spell>());
+Weapon spellbook = new Weapon("Spellbook", "Book of spells", 1, new List<Spell>());
 spellbook.AddSpell(fireBall);
 spellbook.AddSpell(health);
 Weapon elvenBow = new Weapon("Shortbow", "Bow", 5, new List<Spell>());

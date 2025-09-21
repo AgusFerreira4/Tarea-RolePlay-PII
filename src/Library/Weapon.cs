@@ -25,7 +25,7 @@ public class Weapon : IItem
         Spells.Add(spell);
     }
 
-    public void ClearSpell(Spell spell)
+    public void ClearSpell()
     {
         Spells.Clear();
     }
