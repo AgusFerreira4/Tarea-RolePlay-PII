@@ -1,32 +1,25 @@
-﻿namespace Library;   
+namespace Library;
 
-public class Wizard : ICharacter
+public class Dwarf : ICharacter
 {
     public string Name { get; set; }
     public int HP { get; set; }
-
     public int Defense { get; set; }
-
-    public Armor Armor { get; set; }
     public int Damage { get; set; }
-    public int Mana { get; set; }
+    
     public Weapon Weapon { get; set; }
-
-    public Wizard(string name, Weapon weapon)
-    {
+    
+    public Armor Armor { get; set; }
+    
+    public Dwarf(string name, Weapon unWeapon)
+        {
         this.Name = name;
-        this.Weapon = weapon;
-        this.Mana = 100;
         this.HP = 100;
-        this.Damage = 2;
-        this.Defense = 2;
-    }
-
-    public void Attack(ICharacter character)
-    {
-        character.HP = this.GetTotalAttack() - character.Defense;
-    }
-
+        this.Defense = 3;
+        this.Damage = 6;
+        this.Weapon = unWeapon;
+        }
+    
     public int GetTotalAttack()
     {
         return Damage + Weapon.Damage + Armor.Damage;
@@ -37,23 +30,16 @@ public class Wizard : ICharacter
         return Defense + Weapon.Defense + Armor.Defense;
     }
     
-    public void ThrowSpell(Spell spell)
+    public void Attack(ICharacter character)
     {
-        if (Weapon.Type == "Book of spells")
-        {
-            bool spellInBook = Weapon.Spells.Contains(spell);
-            if (spellInBook)
-            {
-                this.Mana = Mana - spell.ManaCost;
-            }
-
-        }
+        character.HP = this.GetTotalAttack() - character.Defense;
     }
-
+    
     public void Heal(ICharacter character)
     {
-        this.HP = 100;
+        character.HP = 100; 
     }
+    
     public void ChangeItem(IItem item)
     {
         if (item is Weapon weapon)
@@ -65,7 +51,7 @@ public class Wizard : ICharacter
             Armor = armor;   
         }
     }
-
+    
     public void DropItem(IItem item)
     {
         if (item is Weapon weapon)
@@ -77,4 +63,7 @@ public class Wizard : ICharacter
             Armor = null;    
         }
     }
+    
+
+    
 }

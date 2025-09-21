@@ -39,7 +39,7 @@ public class Weapon : IItem
     {
         foreach (Spell spell in Spells)
         {
-            Console.WriteLine(spell.Name);
+            Console.WriteLine(spell.name);
         }
     }
 }

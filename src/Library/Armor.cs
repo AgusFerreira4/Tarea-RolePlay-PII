@@ -3,7 +3,6 @@
 public class Armor : IItem
 {
     public string Name { get; set; }
-    public string Type { get; set; }
     public int Damage { get; set; }
     public int Healing { get; set; }
     public int Defense { get; set; }
@@ -12,7 +11,6 @@ public class Armor : IItem
     {
         Defense = defense;
         Name = name;
-        Type = type;
         Damage = 0;
         Healing = 0;
     }

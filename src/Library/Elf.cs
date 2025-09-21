@@ -7,21 +7,33 @@ public class Elf: ICharacter
     public int Defense { get; set; }
 
     public int Damage { get; set; }
+   
     public Weapon Weapon { get; set; }
     public Armor Armor { get; set; }
 
-    public Elf (string unName)
+    public Elf (string unName, Weapon unWeapon)
     {
-        Name = unName;
-        HP = 100;
-        Defense = 1;
-        Damage = 3;
+        this.Name = unName;
+        this.HP = 100;
+        this.Defense = 1;
+        this.Damage = 3;
+        this.Weapon = unWeapon;
 
     }
 
-    public void Attack(ICharacter character)
+    public int GetTotalAttack()
     {
-     
+        return Damage + Weapon.Damage + Armor.Damage;
+    }
+
+    public int GetTotalDefense()
+    {
+        return Defense + Weapon.Defense + Armor.Defense;
+    }
+    
+    public void Attack(ICharacter character)
+    { 
+        character.HP = this.GetTotalAttack() - character.Defense;
     }
     
     public void Heal(ICharacter character)
@@ -29,21 +41,6 @@ public class Elf: ICharacter
         character.HP = 100; 
     }
     
-    public void GiveItem(IItem item)
-    {
-        switch (item)
-        {
-            case Armor armor:
-                this.Armor = armor;
-                break;
-            case Weapon weapon:
-                this.Weapon = weapon;
-                break;
-            default:
-                throw new ArgumentException("El item no es equipable", nameof(item));
-            
-        }
-    }
 
     public void ChangeItem(IItem item)
     {
