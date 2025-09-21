@@ -4,22 +4,8 @@ public class Dwarf : ICharacter
 {
     public string Name { get; set; }
     public int HP { get; set; }
-    public int BaseDefense { get; set; }
-    public int TotalDefense
-    {
-        get
-        {
-            return this.BaseDefense + this.Armor.Defense + this.Weapon.Defense;
-        }
-    }
-    public int BaseDamage { get; set; }
-    public int TotalDamage
-    {
-        get
-        {
-            return this.BaseDamage + this.Armor.Damage + this.Weapon.Damage;
-        }
-    }
+    public int Defense { get; set; }
+    public int Damage { get; set; }
     
     public Weapon Weapon { get; set; }
     
@@ -29,19 +15,24 @@ public class Dwarf : ICharacter
         {
         this.Name = name;
         this.HP = 100;
-        this.BaseDefense = 3;
-        this.BaseDamage = 6;
+        this.Defense = 3;
+        this.Damage = 6;
         this.Weapon = unWeapon;
         }
     
+    public int GetTotalAttack()
+    {
+        return Damage + Weapon.Damage + Armor.Damage;
+    }
+
+    public int GetTotalDefense()
+    {
+        return Defense + Weapon.Defense + Armor.Defense;
+    }
+    
     public void Attack(ICharacter character)
     {
-        int totalDamage = BaseDamage;
-        if (Weapon != null)
-        {
-            totalDamage += Weapon.Damage;
-        }
-        character.HP = totalDamage - character.BaseDefense;
+        character.HP = this.GetTotalAttack() - character.Defense;
     }
     
     public void Heal(ICharacter character)

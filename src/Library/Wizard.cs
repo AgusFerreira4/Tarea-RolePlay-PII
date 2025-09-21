@@ -5,24 +5,10 @@ public class Wizard : ICharacter
     public string Name { get; set; }
     public int HP { get; set; }
 
-    public int BaseDefense { get; set; }
-    public int TotalDefense
-    {
-        get
-        {
-            return this.BaseDefense + this.Armor.Defense + this.Weapon.Defense;
-        }
-    }
+    public int Defense { get; set; }
 
     public Armor Armor { get; set; }
-    public int BaseDamage { get; set; }
-    public int TotalDamage
-    {
-        get
-        {
-            return this.BaseDamage + this.Armor.Damage + this.Weapon.Damage;
-        }
-    }
+    public int Damage { get; set; }
     public int Mana { get; set; }
     public Weapon Weapon { get; set; }
 
@@ -32,15 +18,25 @@ public class Wizard : ICharacter
         this.Weapon = weapon;
         this.Mana = 100;
         this.HP = 100;
-        this.BaseDamage = 2;
-        this.BaseDefense = 2;
+        this.Damage = 2;
+        this.Defense = 2;
     }
 
     public void Attack(ICharacter character)
     {
-        character.HP = (BaseDamage + Weapon.Damage) - character.BaseDefense;
+        character.HP = this.GetTotalAttack() - character.Defense;
     }
 
+    public int GetTotalAttack()
+    {
+        return Damage + Weapon.Damage + Armor.Damage;
+    }
+
+    public int GetTotalDefense()
+    {
+        return Defense + Weapon.Defense + Armor.Defense;
+    }
+    
     public void ThrowSpell(Spell spell)
     {
         if (Weapon.Type == "Book of spells")
@@ -54,7 +50,7 @@ public class Wizard : ICharacter
         }
     }
 
-    public void Heal()
+    public void Heal(ICharacter character)
     {
         this.HP = 100;
     }

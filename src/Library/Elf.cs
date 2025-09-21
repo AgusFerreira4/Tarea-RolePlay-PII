@@ -4,24 +4,10 @@ public class Elf: ICharacter
 {
     public string Name { get; set; }
     public int HP { get; set; }
-    public int BaseDefense { get; set; }
+    public int Defense { get; set; }
 
-    public int TotalDefense
-    {
-        get
-        {
-            return this.BaseDefense + this.Armor.Defense + this.Weapon.Defense;
-        }
-    }
-
-    public int BaseDamage { get; set; }
-    public int TotalDamage
-    {
-        get
-        {
-            return this.BaseDamage + this.Armor.Damage + this.Weapon.Damage;
-        }
-    }
+    public int Damage { get; set; }
+   
     public Weapon Weapon { get; set; }
     public Armor Armor { get; set; }
 
@@ -29,15 +15,25 @@ public class Elf: ICharacter
     {
         this.Name = unName;
         this.HP = 100;
-        this.BaseDefense = 1;
-        this.BaseDamage = 3;
+        this.Defense = 1;
+        this.Damage = 3;
         this.Weapon = unWeapon;
 
     }
 
-    public void Attack(ICharacter character)
+    public int GetTotalAttack()
     {
-     
+        return Damage + Weapon.Damage + Armor.Damage;
+    }
+
+    public int GetTotalDefense()
+    {
+        return Defense + Weapon.Defense + Armor.Defense;
+    }
+    
+    public void Attack(ICharacter character)
+    { 
+        character.HP = this.GetTotalAttack() - character.Defense;
     }
     
     public void Heal(ICharacter character)
