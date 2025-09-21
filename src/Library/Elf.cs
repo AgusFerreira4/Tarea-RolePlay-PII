@@ -4,18 +4,34 @@ public class Elf: ICharacter
 {
     public string Name { get; set; }
     public int HP { get; set; }
-    public int Defense { get; set; }
+    public int BaseDefense { get; set; }
 
-    public int Damage { get; set; }
+    public int TotalDefense
+    {
+        get
+        {
+            return this.BaseDefense + this.Armor.Defense + this.Weapon.Defense;
+        }
+    }
+
+    public int BaseDamage { get; set; }
+    public int TotalDamage
+    {
+        get
+        {
+            return this.BaseDamage + this.Armor.Damage + this.Weapon.Damage;
+        }
+    }
     public Weapon Weapon { get; set; }
     public Armor Armor { get; set; }
 
-    public Elf (string unName)
+    public Elf (string unName, Weapon unWeapon)
     {
-        Name = unName;
-        HP = 100;
-        Defense = 1;
-        Damage = 3;
+        this.Name = unName;
+        this.HP = 100;
+        this.BaseDefense = 1;
+        this.BaseDamage = 3;
+        this.Weapon = unWeapon;
 
     }
 

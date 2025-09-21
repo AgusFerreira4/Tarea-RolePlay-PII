@@ -1,32 +1,47 @@
 namespace Library;
 
-public class Dwarf
+public class Dwarf : ICharacter
 {
     public string Name { get; set; }
-    public int Health { get; set; }
-    public int Defense { get; set; }
-    public int Damage { get; set; }
+    public int HP { get; set; }
+    public int BaseDefense { get; set; }
+    public int TotalDefense
+    {
+        get
+        {
+            return this.BaseDefense + this.Armor.Defense + this.Weapon.Defense;
+        }
+    }
+    public int BaseDamage { get; set; }
+    public int TotalDamage
+    {
+        get
+        {
+            return this.BaseDamage + this.Armor.Damage + this.Weapon.Damage;
+        }
+    }
     
     public Weapon Weapon { get; set; }
     
     public Armor Armor { get; set; }
     
-    public Dwarf(string name, int health, int defense, int damage)
+    public Dwarf(string name, Weapon unWeapon)
         {
-        Name = name;
-        Health = 100;
-        Defense = 3;
-        Damage = 6;
+        this.Name = name;
+        this.HP = 100;
+        this.BaseDefense = 3;
+        this.BaseDamage = 6;
+        this.Weapon = unWeapon;
         }
     
     public void Attack(ICharacter character)
     {
-        int totalDamage = Damage;
+        int totalDamage = BaseDamage;
         if (Weapon != null)
         {
             totalDamage += Weapon.Damage;
         }
-        character.HP = totalDamage - character.Defense;
+        character.HP = totalDamage - character.BaseDefense;
     }
     
     public void Heal(ICharacter character)
