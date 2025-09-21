@@ -5,6 +5,8 @@ using System.Collections.Generic;
 namespace LibraryTests
 {
     [TestClass]
+    // Decidimos hacer test solo para wizard, ya que esta clase tiene contenidos los metodos de las demás razas y un poco más
+    // O sea que si funciona esta funcionan las demás
     public class WizardTests
     {
         private Weapon bookOfSpells;
@@ -14,14 +16,11 @@ namespace LibraryTests
         [TestInitialize]
         public void Setup()
         {
-            // Libro de hechizos con un hechizo inicial
             var fireball = new Spell("Fireball", "Damage", 0, 20, 30);
             bookOfSpells = new Weapon("Libro de Hechizos", "Book of spells", 5, new List<Spell> { fireball });
 
-            // Armadura básica: las armaduras sólo tienen defensa (no daño)
             armor = new Armor ("tunic", 3, "cool tunic") ;
 
-            // Crear mago con el libro de hechizos y asignarle armadura
             wizard = new Wizard("Gandalf", bookOfSpells);
             wizard.Armor = armor;
         }
