@@ -29,21 +29,6 @@ public class Elf: ICharacter
         character.HP = 100; 
     }
     
-    public void GiveItem(IItem item)
-    {
-        switch (item)
-        {
-            case Armor armor:
-                this.Armor = armor;
-                break;
-            case Weapon weapon:
-                this.Weapon = weapon;
-                break;
-            default:
-                throw new ArgumentException("El item no es equipable", nameof(item));
-            
-        }
-    }
 
     public void ChangeItem(IItem item)
     {
