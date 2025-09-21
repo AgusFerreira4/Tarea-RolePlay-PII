@@ -7,27 +7,27 @@ public interface ICharacter
     public int Defense { get; set; }
     public Weapon Weapon { get; set; }
 
-    public void Attack(ICharacter character)
+    public void Attack()
     {
         
     }
 
-    public void Heal(ICharacter character)
+    public void Heal()
     {
         
     }
 
-    public void GiveItem(ICharacter character)
+    public void GiveItem()
     {
         
     }
 
-    public void ChangeItem(ICharacter character)
+    public void ChangeItem()
     {
         
     }
 
-    public void DropItem(ICharacter character)
+    public void DropItem()
     {
         
     }
