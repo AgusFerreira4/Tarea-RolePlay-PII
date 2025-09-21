@@ -37,11 +37,11 @@ public class Wizard : ICharacter
     {
         if (item is Weapon weapon)
         {
-            Weapon = weapon;  // weapon ya es Weapon
+            Weapon = weapon;
         }
         else if (item is Armor armor)
         {
-            Armor = armor;    // armor ya es Armor
+            Armor = armor;   
         }
     }
 
