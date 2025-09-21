@@ -7,14 +7,14 @@ public class Wizard : ICharacter
     public int Defense { get; set; }
     public Armor Armor { get; set; }
     public int Damage { get; set; }
-    public int Magic { get; set; }
+    public int Mana { get; set; }
     public Weapon Weapon { get; set; }
 
     public Wizard(string name, Weapon weapon)
     {
         this.Name = name;
-        this.Weapon = Weapon;
-        this.Magic = 100;
+        this.Weapon = weapon;
+        this.Mana = 100;
         this.HP = 100;
         this.Damage = 2;
     }
@@ -24,9 +24,13 @@ public class Wizard : ICharacter
         character.HP = (Damage + Weapon.Damage) - character.Defense;
     }
 
-    public void ThrowSpell()
+    public void ThrowSpell(Spell spell)
     {
-        
+        if (Weapon.Type == "Book of spells")
+        {
+            this.Mana = Mana - spell.ManaCost;
+
+        }
     }
 
     public void Heal()
