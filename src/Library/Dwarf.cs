@@ -36,18 +36,26 @@ public class Dwarf
     
     public void ChangeItem(IItem item)
     {
-        if (item.Type == "Weapon")
-            Weapon = (Weapon)item;
-        else if (item.Type == "Armor")
-            Armor = (Armor)item;
+        if (item is Weapon weapon)
+        {
+            Weapon = weapon;
+        }
+        else if (item is Armor armor)
+        {
+            Armor = armor;   
+        }
     }
     
     public void DropItem(IItem item)
     {
-        if (item.Type == "Weapon" && Weapon == item)
-            Weapon = null;
-        else if (item.Type == "Armor" && Armor == item)
-            Armor = null;
+        if (item is Weapon weapon)
+        {
+            Weapon = null; 
+        }
+        else if (item is Armor armor)
+        {
+            Armor = null;    
+        }
     }
     
 
