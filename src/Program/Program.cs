@@ -25,12 +25,20 @@ Armor TheArmor = new Armor("Cloth", 10, "The Armor");
 
 Elf adam = new Elf("Adam", elvenBow);
 adam.ChangeItem(elvenArmor);
+adam.Heal(adam);
 Wizard morgin = new Wizard("Morgin", spellbook);
 morgin.ChangeItem(wizardRobe);
+morgin.Heal(morgin);
+morgin.Attack(adam);
+morgin.ThrowSpell(fireBall);
 Dwarf José = new Dwarf("José", MiniSword);
 José.ChangeItem((dwarfArmor));
+José.GetTotalAttack();
+José.GetTotalDefense();
 Dwarf DwarfGod = new Dwarf("DwarfGod", OldKatana);
 DwarfGod.ChangeItem((TheArmor));
+DwarfGod.Heal(DwarfGod);
+DwarfGod.Attack(José);
 
 
 
