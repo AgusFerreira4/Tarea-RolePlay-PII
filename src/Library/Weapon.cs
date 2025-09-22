@@ -25,7 +25,7 @@ public class Weapon : IItem
         Spells.Add(spell);
     }
 
-    public void ClearSpell(Spell spell)
+    public void ClearSpell()
     {
         Spells.Clear();
     }
@@ -34,12 +34,5 @@ public class Weapon : IItem
     {
         Spells.RemoveAll(spell => spell.Name == name);
     }
-
-    public void PrintSpells()
-    {
-        foreach (Spell spell in Spells)
-        {
-            Console.WriteLine(spell.Name);
-        }
-    }
+    
 }
